@@ -1,0 +1,16 @@
+*-build-desktop
+*.pro.user
+*log
+*tlog
+*obj
+*.user.*
+moc*
+*.pdb
+*.lastbuildstate
+*.manifest
+*.pch
+ui_*.h
+Makefile*
+qrc_*.cpp
+Doxdoc
+*sdf
