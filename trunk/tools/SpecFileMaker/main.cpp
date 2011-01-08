@@ -8,7 +8,7 @@ using namespace std;
 #define AppendElementText(doc,title,text) {\
     QDomElement element = doc.createElement(title);\
     element.appendChild(doc.createTextNode(text));\
-    doc.appendChild(element);}
+    root.appendChild(element);}
 #define AuxAppendElementText(title,text) AppendElementText(document,title,text)
 
 int PrintNGetOption()
@@ -34,32 +34,35 @@ int PrintNGetOption()
 void SaveSpecData(const SpecFileData& data)
 {
     QDomDocument document("PluginSpec");
+    QDomElement root = document.createElement("PluginSpec");
     AuxAppendElementText("Name",data.Name);
     AuxAppendElementText("Version",data.Version);
     AuxAppendElementText("Author",data.Author);
-    AuxAppendElementText("Bug Report E-mail",data.BugReportEMail);
+    AuxAppendElementText("Bug_Report_E-mail",data.BugReportEMail);
 
 
 
     if(!data.DependencyList.empty())
     {
-        QDomElement droot = document.createElement("Dependency List");
+        QDomElement droot = document.createElement("Dependency_List");
         for(QList<QPair<QString,QString > >::const_iterator it = data.DependencyList.begin();
         it!=data.DependencyList.end();++it)
         {
             const QPair<QString,QString >& d = *it;
             QDomElement ele = document.createElement("Dependency");
-            QDomAttr nameAttr = document.createAttribute("Name");
-            QDomAttr versionAttr = document.createAttribute("Version");
-            nameAttr.setValue(d.first);
-            versionAttr.setValue(d.second);
-            ele.appendChild(nameAttr);
-            ele.appendChild(versionAttr);
+            ele.setAttribute("Name",d.first);
+            ele.setAttribute("Version",d.second);
+//            QDomAttr nameAttr = document.createAttribute("Name");
+//            QDomAttr versionAttr = document.createAttribute("Version");
+//            nameAttr.setValue(d.first);
+//            versionAttr.setValue(d.second);
+//            ele.appendChild(nameAttr);
+//            ele.appendChild(versionAttr);
             droot.appendChild(ele);
         }
-        document.appendChild(droot);
+        root.appendChild(droot);
     }
-
+    document.appendChild(root);
     QFile file(QString("%1.pluginspec").arg(data.Name));
     file.open(QFile::WriteOnly);
     QTextStream tout(&file);
