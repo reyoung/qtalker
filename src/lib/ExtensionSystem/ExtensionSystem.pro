@@ -12,9 +12,13 @@ TEMPLATE = lib
 
 DEFINES += EXTENSIONSYSTEM_LIBRARY
 
-SOURCES += extensionsystem.cpp \
-    pluginspec.cpp
+SOURCES += \
+    pluginspec.cpp \
+    pluginmanager.cpp \
+    iplugin.cpp
 
-HEADERS += extensionsystem.h\
+HEADERS +=\
         ExtensionSystem_global.h \
-    pluginspec.h
+    pluginspec.h \
+    pluginmanager.h \
+    iplugin.h

@@ -23,10 +23,20 @@ namespace ExtensionSystem
 *       Plugin描述文件的抽象。通过描述文件，来加载Plugin
 *
 */
-    class EXTENSIONSYSTEMSHARED_EXPORT PluginSpec : public QObject
+    class EXTENSIONSYSTEMSHARED_EXPORT PluginSpec //: public QObject
     {
-        Q_OBJECT
+        //Q_OBJECT
+
     public:
+        enum State{
+            NotLoad = 0,
+            Loaded = 1,
+            BeforeInit = 2,
+            Inited = 4,
+            Completed = 8,
+            Error = -1
+        };
+
 
 //! 默认构造函数 ,以Spec文件名为参数.
 /*!
@@ -42,7 +52,7 @@ namespace ExtensionSystem
  \remark 1.2011.01.08 21:13 created by Reyoung
  \return
 */
-        explicit PluginSpec(const QString& fn,QObject *parent = 0);
+        explicit PluginSpec(const QString& fn);
         virtual ~PluginSpec();
 //! 返回Spec Name.
 /*!
@@ -125,10 +135,13 @@ namespace ExtensionSystem
         QString category()const;
         QString copyRight()const;
         QString license()const;
-    signals:
-
+        int getState()const;
+        void setState(int st);
+//    signals:
+        bool operator == (const QString& name);
     private:
         PluginSpecInnerData* m_data;
     };
+
 }
 #endif // PLUGINSPEC_H

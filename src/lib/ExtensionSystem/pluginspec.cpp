@@ -14,6 +14,7 @@ struct PluginSpecInnerData
     QString Description;
     QString Category;
     QList<SpecDependencyData > DependencyList;
+    int m_state;
 };
 }
 
@@ -26,9 +27,10 @@ PluginSpec::~PluginSpec()
     delete this->m_data;
 }
 
-PluginSpec::PluginSpec(const QString& fn,QObject *parent) :
-    QObject(parent),m_data(new PluginSpecInnerData())
+PluginSpec::PluginSpec(const QString& fn) :
+    m_data(new PluginSpecInnerData())
 {
+    qDebug()<<"Loading "<<fn;
     QDomDocument document;
     QFile file(fn);
     file.open(QFile::ReadOnly);
@@ -36,7 +38,7 @@ PluginSpec::PluginSpec(const QString& fn,QObject *parent) :
     QString errorStr;
     if (!document.setContent(&file, true, &errorStr, &errorLine,
                                 &errorColumn)) {
-        qDebug()<<tr("Parse error at line %1, column %2:\n%3")
+        qDebug()<<QObject::tr("Parse error at line %1, column %2:\n%3")
                                 .arg(errorLine)
                                  .arg(errorColumn)
                                  .arg(errorStr);
@@ -98,6 +100,7 @@ PluginSpec::PluginSpec(const QString& fn,QObject *parent) :
         n = n.nextSibling();
     }
     file.close();
+    this->m_data->m_state = NotLoad;
 }
 
 QString PluginSpec::name()const
@@ -135,4 +138,17 @@ QString PluginSpec::copyRight()const
 QString PluginSpec::description()const
 {
     return this->m_data->Description;
+}
+int PluginSpec::getState()const
+{
+    return m_data->m_state;
+}
+void PluginSpec::setState(int st)
+{
+    m_data->m_state = st;
+}
+
+bool PluginSpec::operator ==(const QString& name)
+{
+    return this->m_data->Name==name;
 }
