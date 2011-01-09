@@ -11,7 +11,20 @@ TEMPLATE = lib
 
 DEFINES += COREPLUGIN_LIBRARY
 
-SOURCES += coreplugin.cpp
+SOURCES += \
+    plugin.cpp \
+    core.cpp \
+    uniqueidmanager.cpp \
+    ActionManager/menuactioncontainer.cpp \
+    ActionManager/actionmanager.cpp \
+    ActionManager/action.cpp
 
-HEADERS += coreplugin.h\
-        CorePlugin_global.h
+HEADERS +=\
+        CorePlugin_global.h \
+    plugin.h \
+    core.h \
+    uniqueidmanager.h \
+    ActionManager/iactioncontainer.h \
+    ActionManager/menuactioncontainer.h \
+    ActionManager/actionmanager.h \
+    ActionManager/action.h
