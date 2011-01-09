@@ -76,6 +76,7 @@ void PluginManager::LoadAllPlugin()
 {
 
     QList<Inner::AuxLoadStruct> specList;
+    QList<IPlugin* > olist;
     foreach(const PluginSpec& spec, this->m_specs)
     {
         specList.push_back(Inner::AuxLoadStruct(spec));
@@ -91,9 +92,14 @@ void PluginManager::LoadAllPlugin()
                 /// Load
                 conti = true;
                 QString fn("plugin/%1.%2");
+
+/// Platform independence
 #ifdef Q_OS_WIN32
                 fn = fn.arg(spec.key.Name).arg("dll");
 #endif
+/// end
+
+
                 QPluginLoader loader(fn);
                 bool loadSuccess = loader.load();
                 if(!loadSuccess)
@@ -104,8 +110,26 @@ void PluginManager::LoadAllPlugin()
                 {
                     QObject* obj = loader.instance();
                     this->addObject(obj);
+
                     IPlugin* plugin = qobject_cast<IPlugin*>(obj);
+                    foreach(const PluginSpec& s, this->m_specs)
+                    {
+                        if(s.name() == spec.key.Name)
+                        {
+                            plugin->setSpec(&s);
+                            break;
+                        }
+                    }
+
+                    olist.append(plugin);
                     plugin->Initialize(QCoreApplication::arguments());
+                }
+
+                /// Set Statue
+                for(QList<PluginSpec>::iterator it = this->m_specs.begin();
+                it!= this->m_specs.end();++it)
+                {
+                    it->setState (PluginSpec::BeforeInit|PluginSpec::Loaded);
                 }
 
 
@@ -129,6 +153,16 @@ void PluginManager::LoadAllPlugin()
         if(!conti)
             break;
     }
+    for(QList<IPlugin* >::iterator it = olist.begin();it!=olist.end();++it)
+    {
+        IPlugin* plugin = *it;
+        plugin->Initialized();
+
+        int index = this->m_specs.indexOf(*plugin->getSpec());
+
+        this->m_specs[index].setState(PluginSpec::Loaded|PluginSpec::Inited);
+    }
+
 }
 void PluginManager::addObject(QObject *object)
 {

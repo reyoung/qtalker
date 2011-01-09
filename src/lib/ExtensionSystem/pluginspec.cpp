@@ -136,3 +136,7 @@ bool PluginSpec::operator ==(const QString& name)
 {
     return this->Name==name;
 }
+bool PluginSpec::operator ==(const PluginSpec& other)
+{
+    return this->Name == other.Name;
+}

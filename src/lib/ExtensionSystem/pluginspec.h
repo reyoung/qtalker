@@ -139,6 +139,7 @@ namespace ExtensionSystem
         void setState(int st);
 //    signals:
         bool operator == (const QString& name);
+        bool operator == (const PluginSpec& other);
     private:
         QString Version;
         QString Name;
