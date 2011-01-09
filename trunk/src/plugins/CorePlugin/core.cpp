@@ -1,6 +1,6 @@
 #include "core.h"
 #include "uniqueidmanager.h"
-
+#include "ActionManager/actionmanager.h"
 using namespace CorePlugin;
 
 Core *Core::m_instance = 0;
@@ -24,6 +24,9 @@ bool Core::init(const QStringList &cmdArgs)
     if(DebugFlag)
         qDebug()<<"Initing UniqueIDManager.....";
     UniqueIDManager::init();
+    if(DebugFlag)
+        qDebug()<<"Initing ActionManager.....";
+    ActionManager::init();
     return true;
 }
 UniqueIDManager* Core::uidManager()

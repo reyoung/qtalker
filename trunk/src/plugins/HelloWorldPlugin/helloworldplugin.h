@@ -8,7 +8,7 @@ class HelloWorldPlugin : public ExtensionSystem::IPlugin
     Q_OBJECT
 public:
     explicit HelloWorldPlugin();
-    virtual bool Initialize(QStringList& cmdArgs);
+    virtual bool Initialize(const QStringList& cmdArgs);
 signals:
 
 public slots:

@@ -6,7 +6,7 @@ Plugin::Plugin()
 
 {
 }
-bool Plugin::Initialize(QStringList& cmdArgs)
+bool Plugin::Initialize(const QStringList& cmdArgs)
 {
     Q_UNUSED(cmdArgs);
     Core::init(cmdArgs);

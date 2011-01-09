@@ -11,7 +11,9 @@ TARGET = HelloWorldPlugin
 TEMPLATE = lib
 
 DEFINES += HELLOWORLDPLUGIN_LIBRARY
-
+INCLUDEPATH += $$ProjectRoot/src/plugins/CorePlugin
+LIBS += -L$$PluginDest
+LIBS += -lCorePlugin
 SOURCES += \
     helloworldplugin.cpp
 

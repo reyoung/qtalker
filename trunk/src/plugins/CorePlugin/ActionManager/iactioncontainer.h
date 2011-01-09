@@ -10,11 +10,15 @@ namespace CorePlugin
     class ID;
     class ActionManager;
     class MenuActionContainer;
+    class MenuBarActionContainer;
+
     class IActionContainer
     {
+
         Q_DISABLE_COPY(IActionContainer)
         friend class ActionManager;
         friend class MenuActionContainer;
+        friend class MenuBarActionContainer;
         IActionContainer(const ID& id):m_id(id){}
     public:
         virtual QMenu* menu(){return 0;}
