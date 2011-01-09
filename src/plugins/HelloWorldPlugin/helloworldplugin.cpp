@@ -6,13 +6,13 @@
 #include <ActionManager/menuactioncontainer.h>
 #include <ActionManager/action.h>
 HelloWorldPlugin::HelloWorldPlugin() :
-    ExtensionSystem::IPlugin()
-{
+        ExtensionSystem::IPlugin() {
 }
-bool HelloWorldPlugin::Initialize(const QStringList& cmdArgs)
-{
+
+
+bool HelloWorldPlugin::Initialize(const QStringList& cmdArgs) {
     Q_UNUSED(cmdArgs);
-    //qDebug()<<"Hello world";
+//qDebug()<<"Hello world";
     QMainWindow* lab = new QMainWindow();
     lab->setWindowTitle(tr("hello world"));
     CorePlugin::ActionManager* am = CorePlugin::ActionManager::instance();
@@ -22,7 +22,6 @@ bool HelloWorldPlugin::Initialize(const QStringList& cmdArgs)
     MenuActionContainer* menu = (MenuActionContainer*)am->createMenu("Menu.Hello");
 
     menu->setTitle(tr("HEllo world?"));
-
 
     Action* action = am->createAction("Hello Action");
     action->setText(tr("Action"));
@@ -36,4 +35,6 @@ bool HelloWorldPlugin::Initialize(const QStringList& cmdArgs)
     lab->show();
     return true;
 }
+
+
 Q_EXPORT_PLUGIN2(HelloWorldPlugin,HelloWorldPlugin)

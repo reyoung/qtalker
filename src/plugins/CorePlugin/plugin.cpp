@@ -6,11 +6,13 @@ Plugin::Plugin()
 
 {
 }
-bool Plugin::Initialize(const QStringList& cmdArgs)
-{
+
+
+bool Plugin::Initialize(const QStringList& cmdArgs) {
     Q_UNUSED(cmdArgs);
     Core::init(cmdArgs);
     return true;
 }
+
 
 Q_EXPORT_PLUGIN2(CorePlugin,Plugin)

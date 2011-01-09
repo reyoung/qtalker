@@ -5,10 +5,8 @@
 #include "iactioncontainer.h"
 #include "actionmanager.h"
 
-namespace CorePlugin
-{
-class MenuBarActionContainer : public QMenuBar,public IActionContainer
-{
+namespace CorePlugin {
+class MenuBarActionContainer : public QMenuBar,public IActionContainer {
     Q_OBJECT
     Q_DISABLE_COPY(MenuBarActionContainer);
 //    Q_INTERFACES(IActionContainer)
@@ -19,11 +17,11 @@ public:
     virtual QMenuBar* menubar();
     virtual void insertAction(Action* act,const ID& before = ID()) ;
     virtual void insertContainer(IActionContainer* menu
-                                      ,const ID& before = ID()) ;
+                                 ,const ID& before = ID()) ;
 signals:
 
 public slots:
 
 };
 }
-#endif // MENUBARACTIONCONTAINER_H
+#endif                                            // MENUBARACTIONCONTAINER_H

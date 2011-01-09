@@ -8,5 +8,4 @@
 #else
 #  define EXTENSIONSYSTEMSHARED_EXPORT Q_DECL_IMPORT
 #endif
-
-#endif // EXTENSIONSYSTEM_GLOBAL_H
+#endif                                            // EXTENSIONSYSTEM_GLOBAL_H

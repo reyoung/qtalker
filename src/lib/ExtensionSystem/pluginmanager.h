@@ -6,30 +6,27 @@
 #include "pluginspec.h"
 #include <QtCore>
 class QDir;
-namespace ExtensionSystem
-{
+namespace ExtensionSystem {
 
-    class EXTENSIONSYSTEMSHARED_EXPORT PluginManager : public QObject
-    {
-        Q_OBJECT
-        Q_DISABLE_COPY(PluginManager)
-        explicit PluginManager();
-        virtual ~PluginManager();
-    public:
-        static PluginManager* instance();
-        void addObject(QObject* object);
+class EXTENSIONSYSTEMSHARED_EXPORT PluginManager : public QObject {
+    Q_OBJECT
+    Q_DISABLE_COPY(PluginManager)
+    explicit PluginManager();
+    virtual ~PluginManager();
+public:
+    static PluginManager* instance();
+    void addObject(QObject* object);
 
-    signals:
+signals:
 
-    public slots:
+public slots:
 
-    private:
-        QList<PluginSpec> m_specs;
-        QList<QObject* > m_objList;
+private:
+    QList<PluginSpec> m_specs;
+    QList<QObject* > m_objList;
 
-
-        void LoadPluginSpec(const QDir& dir);
-        void LoadAllPlugin();
-    };
+    void LoadPluginSpec(const QDir& dir);
+    void LoadAllPlugin();
+};
 }
-#endif // PLUGINMANAGER_H
+#endif                                            // PLUGINMANAGER_H

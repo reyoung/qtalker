@@ -4,10 +4,8 @@
 #include <QObject>
 #include <iplugin.h>
 #include "CorePlugin_global.h"
-namespace CorePlugin
-{
-    class COREPLUGINSHARED_EXPORT Plugin : public ExtensionSystem::IPlugin
-{
+namespace CorePlugin {
+class COREPLUGINSHARED_EXPORT Plugin : public ExtensionSystem::IPlugin {
     Q_OBJECT
 public:
     explicit Plugin();
@@ -18,4 +16,4 @@ public slots:
 
 };
 }
-#endif // PLUGIN_H
+#endif                                            // PLUGIN_H

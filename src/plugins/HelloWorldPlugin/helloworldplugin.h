@@ -3,8 +3,7 @@
 #include <iplugin.h>
 #include <QObject>
 
-class HelloWorldPlugin : public ExtensionSystem::IPlugin
-{
+class HelloWorldPlugin : public ExtensionSystem::IPlugin {
     Q_OBJECT
 public:
     explicit HelloWorldPlugin();
@@ -14,5 +13,4 @@ signals:
 public slots:
 
 };
-
-#endif // HELLOWORLDPLUGIN_H
+#endif                                            // HELLOWORLDPLUGIN_H

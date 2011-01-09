@@ -8,5 +8,4 @@
 #else
 #  define COREPLUGINSHARED_EXPORT Q_DECL_IMPORT
 #endif
-
-#endif // COREPLUGIN_GLOBAL_H
+#endif                                            // COREPLUGIN_GLOBAL_H

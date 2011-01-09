@@ -9,87 +9,75 @@
 
 using namespace ExtensionSystem;
 
-
-
-
 PluginManager::PluginManager() :
-        QObject(0)
-{
+        QObject(0) {
     QDir dir(Global::Const::PluginPath);
     this->LoadPluginSpec(dir);
     this->LoadAllPlugin();
 }
-PluginManager* PluginManager::instance()
-{
+
+
+PluginManager* PluginManager::instance() {
     static PluginManager* ins = new PluginManager() ;
     return ins;
 }
-PluginManager::~PluginManager()
-{
-    for(QList<QObject* >::iterator it = this->m_objList.begin();
-    it!=this->m_objList.end();++it)
-    {
+
+
+PluginManager::~PluginManager() {
+    for (QList<QObject* >::iterator it = this->m_objList.begin();
+            it!=this->m_objList.end();++it) {
         delete *it;
     }
 }
-void PluginManager::LoadPluginSpec(const QDir &dir)
-{
+
+
+void PluginManager::LoadPluginSpec(const QDir &dir) {
     QFileInfoList flist = dir.entryInfoList();
 
-    foreach(const QFileInfo& inf,flist)
-    {
-        if(inf.isDir()
-            &&!inf.isSymLink()
-            &&inf.fileName()!="."
-            &&inf.fileName()!="..")
-        {
+    foreach(const QFileInfo& inf,flist) {
+        if (inf.isDir()
+                &&!inf.isSymLink()
+                &&inf.fileName()!="."
+                &&inf.fileName()!="..") {
             this->LoadPluginSpec(inf.dir());
-        }
-        else if(inf.completeSuffix()=="pluginspec")
-        {
+        } else if (inf.completeSuffix()=="pluginspec") {
             m_specs.append(PluginSpec(inf.filePath()));
         }
     }
 }
-namespace Inner
-{
-    struct AuxLoadStruct
-    {
-        SpecDependencyData key;
-        QList<SpecDependencyData> depends;
-        AuxLoadStruct(const PluginSpec& spec)
-        {
-            key.Name = spec.name();
-            key.Version = spec.version();
-            foreach(const SpecDependencyData& dep , spec.dependencyList())
-            {
-                depends.push_back(dep);
-            }
+
+
+namespace Inner {
+struct AuxLoadStruct {
+    SpecDependencyData key;
+    QList<SpecDependencyData> depends;
+    AuxLoadStruct(const PluginSpec& spec) {
+        key.Name = spec.name();
+        key.Version = spec.version();
+        foreach(const SpecDependencyData& dep , spec.dependencyList()) {
+            depends.push_back(dep);
         }
-        bool operator == (const AuxLoadStruct& other)
-        {
-            return this->key.Name==other.key.Name&&this->key.Version==other.key.Version;
-        }
-    };
+    }
+    bool operator == (const AuxLoadStruct& other) {
+        return this->key.Name==other.key.Name&&this->key.Version==other.key.Version;
+    }
+};
 }
-void PluginManager::LoadAllPlugin()
-{
+
+
+void PluginManager::LoadAllPlugin() {
 
     QList<Inner::AuxLoadStruct> specList;
     QList<IPlugin* > olist;
-    foreach(const PluginSpec& spec, this->m_specs)
-    {
+    foreach(const PluginSpec& spec, this->m_specs) {
         specList.push_back(Inner::AuxLoadStruct(spec));
     }
 
-    for(;;)
-    {
+    for (;;) {
         bool conti = false;
-        foreach(const Inner::AuxLoadStruct& spec,specList)
-        {
-            if(spec.depends.size()==0)
-            {
-                /// Load
+        foreach(const Inner::AuxLoadStruct& spec,specList) {
+            if (spec.depends.size()==0) {
+/// Load
                 conti = true;
                 QString fn("plugin/%1.%2");
 
@@ -99,23 +87,17 @@ void PluginManager::LoadAllPlugin()
 #endif
 /// end
 
-
                 QPluginLoader loader(fn);
                 bool loadSuccess = loader.load();
-                if(!loadSuccess)
-                {
+                if (!loadSuccess) {
                     qWarning()<<tr("%1 Plugin Load Error ").arg(fn);
-                }
-                else
-                {
+                } else {
                     QObject* obj = loader.instance();
                     this->addObject(obj);
 
                     IPlugin* plugin = qobject_cast<IPlugin*>(obj);
-                    foreach(const PluginSpec& s, this->m_specs)
-                    {
-                        if(s.name() == spec.key.Name)
-                        {
+                    foreach(const PluginSpec& s, this->m_specs) {
+                        if (s.name() == spec.key.Name) {
                             plugin->setSpec(&s);
                             break;
                         }
@@ -125,24 +107,19 @@ void PluginManager::LoadAllPlugin()
                     plugin->Initialize(QCoreApplication::arguments());
                 }
 
-                /// Set Statue
-                for(QList<PluginSpec>::iterator it = this->m_specs.begin();
-                it!= this->m_specs.end();++it)
-                {
+/// Set Statue
+                for (QList<PluginSpec>::iterator it = this->m_specs.begin();
+                        it!= this->m_specs.end();++it) {
                     it->setState (PluginSpec::BeforeInit|PluginSpec::Loaded);
                 }
 
-
-                /// Sovole Depend
-                for(QList<Inner::AuxLoadStruct>::iterator it = specList.begin()
-                    ;it!=specList.end();++it)
-                {
-                    for(QList<SpecDependencyData>::iterator dit = it->depends.begin();
-                    dit != it->depends.end();++dit)
-                    {
-                        if(dit->Name == spec.key.Name
-                           &&dit->Version == spec.key.Version)
-                        {
+/// Sovole Depend
+                for (QList<Inner::AuxLoadStruct>::iterator it = specList.begin()
+                        ;it!=specList.end();++it) {
+                    for (QList<SpecDependencyData>::iterator dit = it->depends.begin();
+                            dit != it->depends.end();++dit) {
+                        if (dit->Name == spec.key.Name
+                                &&dit->Version == spec.key.Version) {
                             it->depends.erase(dit);
                             break;
                         }
@@ -151,11 +128,10 @@ void PluginManager::LoadAllPlugin()
                 specList.removeOne(spec);
             }
         }
-        if(!conti)
+        if (!conti)
             break;
     }
-    for(QList<IPlugin* >::iterator it = olist.begin();it!=olist.end();++it)
-    {
+    for (QList<IPlugin* >::iterator it = olist.begin();it!=olist.end();++it) {
         IPlugin* plugin = *it;
         plugin->Initialized();
 
@@ -165,7 +141,8 @@ void PluginManager::LoadAllPlugin()
     }
 
 }
-void PluginManager::addObject(QObject *object)
-{
+
+
+void PluginManager::addObject(QObject *object) {
     this->m_objList.push_back(object);
 }
