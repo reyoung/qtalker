@@ -6,7 +6,7 @@
 #include "ExtensionSystem_global.h"
 namespace ExtensionSystem
 {
-    struct PluginSpecInnerData;/// Plugin Spec Inner Data. Plugin的成员变量
+    //struct PluginSpecInnerData;/// Plugin Spec Inner Data. Plugin的成员变量
 /**
 *	表示Plugin 依赖关系的Data
 *       有依赖于的Name和相应的Version
@@ -140,7 +140,17 @@ namespace ExtensionSystem
 //    signals:
         bool operator == (const QString& name);
     private:
-        PluginSpecInnerData* m_data;
+        QString Version;
+        QString Name;
+        QString Author;
+        QString CopyRight;
+        QString License;
+        QString Url;
+        QString BugReportEMail;
+        QString Description;
+        QString Category;
+        QList<SpecDependencyData > DependencyList;
+        int m_state;
     };
 
 }
