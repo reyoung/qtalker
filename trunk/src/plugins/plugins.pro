@@ -1,4 +1,6 @@
 TEMPLATE  = subdirs
 CONFIG   += ordered
 
-SUBDIRS = HelloWorldPlugin
+SUBDIRS = \
+    HelloWorldPlugin \
+    CorePlugin

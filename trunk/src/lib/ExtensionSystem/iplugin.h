@@ -20,7 +20,7 @@ namespace ExtensionSystem
 
 
         virtual bool Initialize(QStringList& cmdArgs)=0;
-
+        virtual void Initialized(){}
         explicit IPlugin();
 
         const PluginSpec* getSpec()const;
