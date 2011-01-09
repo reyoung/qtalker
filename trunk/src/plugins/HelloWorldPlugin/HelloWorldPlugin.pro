@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += xml
+QT       += xml gui
 include(../plugin.pri)
 
 TARGET = HelloWorldPlugin
