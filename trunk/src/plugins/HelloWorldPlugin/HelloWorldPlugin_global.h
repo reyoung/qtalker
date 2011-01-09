@@ -8,5 +8,4 @@
 #else
 #  define HELLOWORLDPLUGINSHARED_EXPORT Q_DECL_IMPORT
 #endif
-
-#endif // HELLOWORLDPLUGIN_GLOBAL_H
+#endif                                            // HELLOWORLDPLUGIN_GLOBAL_H

@@ -3,13 +3,11 @@
 
 #include <QMenu>
 #include "iactioncontainer.h"
-namespace CorePlugin
-{
-class MenuActionContainer : public QMenu,public IActionContainer
-{
+namespace CorePlugin {
+class MenuActionContainer : public QMenu,public IActionContainer {
     Q_OBJECT
     Q_DISABLE_COPY(MenuActionContainer)
-    //Q_INTERFACES(IActionContainer)
+//Q_INTERFACES(IActionContainer)
     friend class ActionManager;
 
 public:
@@ -17,11 +15,11 @@ public:
     virtual QMenu* menu();
     virtual void insertAction(Action* act,const ID& before = ID());
     virtual void insertContainer(IActionContainer* menu
-                                      ,const ID& before = ID());
+                                 ,const ID& before = ID());
 signals:
 
 public slots:
 
 };
 }
-#endif // MENUACTIONCONTAINER_H
+#endif                                            // MENUACTIONCONTAINER_H

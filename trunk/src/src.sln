@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "app", "F:/MyOpenSource/qtalker/src/app\app.vcxproj", "{40B4A2EA-7A92-36E1-A53F-5D6B943FC1C3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExtensionSystem", "F:/MyOpenSource/qtalker/src/lib/ExtensionSystem\ExtensionSystem.vcxproj", "{E33D234E-504C-36B9-B3F4-573FE131DE38}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorldPlugin", "F:/MyOpenSource/qtalker/src/plugins/HelloWorldPlugin\HelloWorldPlugin.vcxproj", "{8C5B812F-F8D1-3CBC-97A9-F374372A99B6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CorePlugin", "F:/MyOpenSource/qtalker/src/plugins/CorePlugin\CorePlugin.vcxproj", "{5276F6EF-DF95-3783-9B67-1A7CE5F01AF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug|Win32
+		ConfigName.1 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{40B4A2EA-7A92-36E1-A53F-5D6B943FC1C3}.0 = {E33D234E-504C-36B9-B3F4-573FE131DE38}
+		{8C5B812F-F8D1-3CBC-97A9-F374372A99B6}.0 = {E33D234E-504C-36B9-B3F4-573FE131DE38}
+		{8C5B812F-F8D1-3CBC-97A9-F374372A99B6}.1 = {5276F6EF-DF95-3783-9B67-1A7CE5F01AF4}
+		{5276F6EF-DF95-3783-9B67-1A7CE5F01AF4}.0 = {E33D234E-504C-36B9-B3F4-573FE131DE38}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{40B4A2EA-7A92-36E1-A53F-5D6B943FC1C3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{40B4A2EA-7A92-36E1-A53F-5D6B943FC1C3}.Debug|Win32.Build.0 = Debug|Win32
+		{40B4A2EA-7A92-36E1-A53F-5D6B943FC1C3}.Release|Win32.ActiveCfg = Release|Win32
+		{40B4A2EA-7A92-36E1-A53F-5D6B943FC1C3}.Release|Win32.Build.0 = Release|Win32
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Debug|Win32.Build.0 = Debug|Win32
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Release|Win32.ActiveCfg = Release|Win32
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Release|Win32.Build.0 = Release|Win32
+		{8C5B812F-F8D1-3CBC-97A9-F374372A99B6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C5B812F-F8D1-3CBC-97A9-F374372A99B6}.Debug|Win32.Build.0 = Debug|Win32
+		{8C5B812F-F8D1-3CBC-97A9-F374372A99B6}.Release|Win32.ActiveCfg = Release|Win32
+		{8C5B812F-F8D1-3CBC-97A9-F374372A99B6}.Release|Win32.Build.0 = Release|Win32
+		{5276F6EF-DF95-3783-9B67-1A7CE5F01AF4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5276F6EF-DF95-3783-9B67-1A7CE5F01AF4}.Debug|Win32.Build.0 = Debug|Win32
+		{5276F6EF-DF95-3783-9B67-1A7CE5F01AF4}.Release|Win32.ActiveCfg = Release|Win32
+		{5276F6EF-DF95-3783-9B67-1A7CE5F01AF4}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

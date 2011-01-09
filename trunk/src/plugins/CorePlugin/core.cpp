@@ -5,31 +5,37 @@ using namespace CorePlugin;
 
 Core *Core::m_instance = 0;
 Core::Core(QObject *parent) :
-    QObject(parent)
-{
+        QObject(parent) {
 
 }
-Core* Core::instance()
-{
+
+
+Core* Core::instance() {
 
     return m_instance;
 }
 
-bool Core::init(const QStringList &cmdArgs)
-{
+
+bool Core::init(const QStringList &cmdArgs) {
     Q_UNUSED(cmdArgs);
-    if(DebugFlag)
+    if (DebugFlag)
         qDebug()<<"Initing Core.....";
     m_instance = new Core();
-    if(DebugFlag)
+    if (DebugFlag)
         qDebug()<<"Initing UniqueIDManager.....";
     UniqueIDManager::init();
-    if(DebugFlag)
+    if (DebugFlag)
         qDebug()<<"Initing ActionManager.....";
     ActionManager::init();
     return true;
 }
-UniqueIDManager* Core::uidManager()
-{
+
+
+UniqueIDManager* Core::uidManager() {
     return UniqueIDManager::instance();
+}
+
+
+ActionManager* Core::actionManager() {
+    return ActionManager::instance();
 }

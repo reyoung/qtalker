@@ -1,0 +1,22 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExtensionSystem", "F:/MyOpenSource/qtalker/src/lib/ExtensionSystem\ExtensionSystem.vcxproj", "{E33D234E-504C-36B9-B3F4-573FE131DE38}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug|Win32
+		ConfigName.1 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Debug|Win32.Build.0 = Debug|Win32
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Release|Win32.ActiveCfg = Release|Win32
+		{E33D234E-504C-36B9-B3F4-573FE131DE38}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
