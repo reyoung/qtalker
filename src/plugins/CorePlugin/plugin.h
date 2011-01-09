@@ -11,7 +11,7 @@ namespace CorePlugin
     Q_OBJECT
 public:
     explicit Plugin();
-    virtual bool Initialize(QStringList& cmdArgs);
+    virtual bool Initialize(const QStringList& cmdArgs);
 signals:
 
 public slots:

@@ -17,7 +17,8 @@ SOURCES += \
     uniqueidmanager.cpp \
     ActionManager/menuactioncontainer.cpp \
     ActionManager/actionmanager.cpp \
-    ActionManager/action.cpp
+    ActionManager/action.cpp \
+    ActionManager/menubaractioncontainer.cpp
 
 HEADERS +=\
         CorePlugin_global.h \
@@ -27,4 +28,5 @@ HEADERS +=\
     ActionManager/iactioncontainer.h \
     ActionManager/menuactioncontainer.h \
     ActionManager/actionmanager.h \
-    ActionManager/action.h
+    ActionManager/action.h \
+    ActionManager/menubaractioncontainer.h

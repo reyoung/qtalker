@@ -32,6 +32,7 @@ namespace CorePlugin
         bool hasUID(const ID& id);
         int getUID(const ID& id);
         QString uidToString(const int i);
+        void insertUID(const ID& id);
     private:
         QHash<ID,int> m_uids;
 

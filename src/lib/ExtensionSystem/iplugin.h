@@ -19,7 +19,7 @@ namespace ExtensionSystem
         };
 
 
-        virtual bool Initialize(QStringList& cmdArgs)=0;
+        virtual bool Initialize(const QStringList& cmdArgs)=0;
         virtual void Initialized(){}
         explicit IPlugin();
 

@@ -138,12 +138,13 @@ void PluginManager::LoadAllPlugin()
                     ;it!=specList.end();++it)
                 {
                     for(QList<SpecDependencyData>::iterator dit = it->depends.begin();
-                    dit != it->depends.end();++it)
+                    dit != it->depends.end();++dit)
                     {
                         if(dit->Name == spec.key.Name
                            &&dit->Version == spec.key.Version)
                         {
                             it->depends.erase(dit);
+                            break;
                         }
                     }
                 }

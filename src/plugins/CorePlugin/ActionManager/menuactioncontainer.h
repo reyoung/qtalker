@@ -9,6 +9,9 @@ class MenuActionContainer : public QMenu,public IActionContainer
 {
     Q_OBJECT
     Q_DISABLE_COPY(MenuActionContainer)
+    //Q_INTERFACES(IActionContainer)
+    friend class ActionManager;
+
 public:
     explicit MenuActionContainer(const ID& id,QWidget *parent = 0);
     virtual QMenu* menu();

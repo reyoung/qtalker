@@ -29,3 +29,13 @@ QString UniqueIDManager::uidToString(const int i)
 {
     return this->m_uids.key(i).m_data;
 }
+void UniqueIDManager::insertUID(const ID &id)
+{
+    if(this->hasUID(id))
+    {
+        qWarning()<<QObject::tr("Already Have ID %1").arg(id);
+        return;
+    }
+    else
+        this->m_uids.insert(id,qHash(id));
+}
