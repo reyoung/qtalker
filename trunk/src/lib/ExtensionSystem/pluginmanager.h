@@ -17,6 +17,7 @@ namespace ExtensionSystem
         virtual ~PluginManager();
     public:
         static PluginManager* instance();
+        void addObject(QObject* object);
 
     signals:
 
@@ -24,8 +25,11 @@ namespace ExtensionSystem
 
     private:
         QList<PluginSpec> m_specs;
-        void LoadPluginSpec(const QDir& dir);
+        QList<QObject* > m_objList;
 
+
+        void LoadPluginSpec(const QDir& dir);
+        void LoadAllPlugin();
     };
 }
 #endif // PLUGINMANAGER_H
