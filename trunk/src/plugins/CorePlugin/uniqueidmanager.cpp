@@ -1,4 +1,5 @@
 #include "uniqueidmanager.h"
+
 using namespace CorePlugin;
 #include "pluginmanager.h"
 
@@ -36,8 +37,10 @@ QString UniqueIDManager::uidToString(const int i) {
 
 void UniqueIDManager::insertUID(const ID &id) {
     if (this->hasUID(id)) {
-        qWarning()<<QObject::tr("Already Have ID %1").arg(id);
+        qWarning() << QObject::tr("Already Have ID %1").arg(id);
         return;
-    } else
-        this->m_uids.insert(id,qHash(id));
+    }
+
+    else
+        this->m_uids.insert(id, qHash(id));
 }

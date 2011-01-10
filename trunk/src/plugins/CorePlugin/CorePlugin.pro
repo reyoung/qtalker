@@ -20,7 +20,10 @@ SOURCES += \
     ActionManager/action.cpp \
     ActionManager/menubaractioncontainer.cpp \
     widgetfactory.cpp \
-    mainform.cpp
+    mainform.cpp \
+    menubar.cpp \
+    sidepage.cpp \
+    sidewidget.cpp
 
 HEADERS +=\
         CorePlugin_global.h \
@@ -35,9 +38,13 @@ HEADERS +=\
     idable.h \
     widgetfactory.h \
     mainform.h \
-    coreconst.h
+    coreconst.h \
+    menubar.h \
+    sidepage.h \
+    sidewidget.h
 
 FORMS += \
-    MainForm.ui
+    MainForm.ui \
+    SideWidget.ui
 
 OTHER_FILES +=

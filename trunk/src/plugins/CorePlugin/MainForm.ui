@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>182</width>
+    <width>230</width>
     <height>510</height>
    </rect>
   </property>
@@ -14,11 +14,21 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
    <item>
     <layout class="QVBoxLayout" name="headerLayout"/>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="header2Layout"/>
+    <layout class="QVBoxLayout" name="header2Layout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+    </layout>
    </item>
    <item>
     <layout class="QVBoxLayout" name="bodyLayout">

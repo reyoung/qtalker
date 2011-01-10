@@ -6,8 +6,11 @@
 #include <QSystemTrayIcon>
 #include "CorePlugin_global.h"
 #include "ActionManager/actionmanager.h"
+
 namespace CorePlugin {
+
 class UniqueIDManager;
+
 class COREPLUGINSHARED_EXPORT Core : public QObject {
     Q_OBJECT
     Q_DISABLE_COPY(Core)
@@ -28,4 +31,5 @@ private:
     static Core* m_instance;
 };
 }
+
 #endif                                            // CORE_H

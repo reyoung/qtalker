@@ -5,7 +5,9 @@
 #include "ExtensionSystem_global.h"
 #include "pluginspec.h"
 #include <QtCore>
+
 class QDir;
+
 namespace ExtensionSystem {
 
 class EXTENSIONSYSTEMSHARED_EXPORT PluginManager : public QObject {
@@ -29,4 +31,5 @@ private:
     void LoadAllPlugin();
 };
 }
+
 #endif                                            // PLUGINMANAGER_H

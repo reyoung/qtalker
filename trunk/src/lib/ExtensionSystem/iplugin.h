@@ -7,6 +7,7 @@
 #include <QtCore>
 
 namespace ExtensionSystem {
+
 class EXTENSIONSYSTEMSHARED_EXPORT IPlugin : public QObject {
     Q_OBJECT
 public:
@@ -15,11 +16,12 @@ public:
         AsynchronousShutdown
     };
 
-    virtual bool Initialize(const QStringList& cmdArgs)=0;
+    virtual bool Initialize(const QStringList& cmdArgs) = 0;
     virtual void Initialized() {}
+
     explicit IPlugin();
 
-    const PluginSpec* getSpec()const;
+    const PluginSpec* getSpec() const;
 
     void addAutoReleaseObject(QObject* obj);
 
@@ -37,4 +39,5 @@ private:
     friend class PluginManager;
 };
 }
+
 #endif                                            // IPLUGIN_H

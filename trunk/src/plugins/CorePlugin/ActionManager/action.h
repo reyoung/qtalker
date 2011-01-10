@@ -18,17 +18,20 @@
 
 #include <QAction>
 #include "../uniqueidmanager.h"
+
 namespace CorePlugin {
 /// Action Used In QTalker Must Use this Class!!
+
 class Action : public QAction {
     Q_OBJECT
     Q_DISABLE_COPY(Action)                //Disable The Copy
+
     friend class ActionManager;
 private:
-    explicit Action(const ID& id,QWidget *parent = 0);
+    explicit Action(const ID& id, QWidget *parent = 0);
 public:
 
-    ID getID()const {
+    ID getID() const {
         return m_id;
     }
 
@@ -38,4 +41,5 @@ private:
 
 };
 }
+
 #endif                                            // ACTION_H

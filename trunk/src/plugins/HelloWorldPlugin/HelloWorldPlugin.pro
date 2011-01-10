@@ -19,4 +19,5 @@ SOURCES += \
 
 HEADERS +=\
         HelloWorldPlugin_global.h \
-    helloworldplugin.h
+    helloworldplugin.h \
+    hellopage.h

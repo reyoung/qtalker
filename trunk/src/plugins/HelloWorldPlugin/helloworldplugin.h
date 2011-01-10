@@ -13,4 +13,5 @@ signals:
 public slots:
 
 };
+
 #endif                                            // HELLOWORLDPLUGIN_H
