@@ -9,13 +9,13 @@ ActionManager::ActionManager() {
 }
 
 
-IActionContainer* ActionManager::createMenu(const ID &id) {
+MenuActionContainer* ActionManager::createMenu(const ID &id) {
     if (UniqueIDManager::instance()->hasUID(id)) {
         qWarning()<<QObject::tr("%1 UID Already Have").arg(id);
         return 0;
     }
     UniqueIDManager::instance()->insertUID(id);
-    IActionContainer* container = new MenuActionContainer(id,0);
+    MenuActionContainer* container = new MenuActionContainer(id,0);
     this->m_containers.insert(
         UniqueIDManager::instance()->getUID(id),
         container
@@ -24,13 +24,13 @@ IActionContainer* ActionManager::createMenu(const ID &id) {
 }
 
 
-IActionContainer* ActionManager::createMenuBar(const ID &id) {
+MenuBarActionContainer* ActionManager::createMenuBar(const ID &id) {
     if (UniqueIDManager::instance()->hasUID(id)) {
         qWarning()<<QObject::tr("%1 UID Already Have").arg(id);
         return 0;
     }
     UniqueIDManager::instance()->insertUID(id);
-    IActionContainer* container = new MenuBarActionContainer(id,0);
+    MenuBarActionContainer* container = new MenuBarActionContainer(id,0);
     this->m_containers.insert(
         UniqueIDManager::instance()->getUID(id),
         container

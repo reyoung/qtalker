@@ -1,6 +1,7 @@
 #include "core.h"
 #include "uniqueidmanager.h"
 #include "ActionManager/actionmanager.h"
+#include "widgetfactory.h"
 using namespace CorePlugin;
 
 Core *Core::m_instance = 0;
@@ -27,6 +28,9 @@ bool Core::init(const QStringList &cmdArgs) {
     if (DebugFlag)
         qDebug()<<"Initing ActionManager.....";
     ActionManager::init();
+    if (DebugFlag)
+        qDebug()<<"Initing WidgetFactory.....";
+    WidgetFactory::init();
     return true;
 }
 

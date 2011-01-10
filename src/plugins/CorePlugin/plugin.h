@@ -10,6 +10,7 @@ class COREPLUGINSHARED_EXPORT Plugin : public ExtensionSystem::IPlugin {
 public:
     explicit Plugin();
     virtual bool Initialize(const QStringList& cmdArgs);
+    virtual void Initialized();
 signals:
 
 public slots:

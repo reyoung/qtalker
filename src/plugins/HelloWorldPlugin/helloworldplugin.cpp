@@ -4,7 +4,11 @@
 #include <QtGui>
 #include <ActionManager/actionmanager.h>
 #include <ActionManager/menuactioncontainer.h>
+#include <ActionManager/menubaractioncontainer.h>
+#include <ActionManager/actionmanager.h>
 #include <ActionManager/action.h>
+#include <widgetfactory.h>
+#include <mainform.h>
 HelloWorldPlugin::HelloWorldPlugin() :
         ExtensionSystem::IPlugin() {
 }
@@ -12,27 +16,15 @@ HelloWorldPlugin::HelloWorldPlugin() :
 
 bool HelloWorldPlugin::Initialize(const QStringList& cmdArgs) {
     Q_UNUSED(cmdArgs);
-//qDebug()<<"Hello world";
-    QMainWindow* lab = new QMainWindow();
-    lab->setWindowTitle(tr("hello world"));
-    CorePlugin::ActionManager* am = CorePlugin::ActionManager::instance();
     using namespace CorePlugin;
-    IActionContainer* ac = am->createMenuBar("HelloWorldPlugin.Menu");
+    MainForm* mf = CorePlugin::WidgetFactory::instance()->getMainForm();
+    ActionManager* am = ActionManager::instance();
 
-    MenuActionContainer* menu = (MenuActionContainer*)am->createMenu("Menu.Hello");
-
-    menu->setTitle(tr("HEllo world?"));
-
-    Action* action = am->createAction("Hello Action");
-    action->setText(tr("Action"));
-
-    menu->insertAction(action);
-
-    ac->insertContainer(menu);
-    lab->setMenuBar(ac->menubar());
-
-    this->addAutoReleaseObject(lab);
-    lab->show();
+    MenuBarActionContainer* mb = am->createMenuBar(ID("Hello.MenuBar"));
+    mf->addWidgetToHeader1(new QPushButton(tr("Hello"),mf));
+    mf->addWidgetToHeader2(mb);
+    mf->addWidgetToBody(new QTextEdit(mf));
+    mf->addWidgetToHeader1(new QLabel(tr("Hello world"),mf));
     return true;
 }
 

@@ -18,7 +18,9 @@ SOURCES += \
     ActionManager/menuactioncontainer.cpp \
     ActionManager/actionmanager.cpp \
     ActionManager/action.cpp \
-    ActionManager/menubaractioncontainer.cpp
+    ActionManager/menubaractioncontainer.cpp \
+    widgetfactory.cpp \
+    mainform.cpp
 
 HEADERS +=\
         CorePlugin_global.h \
@@ -29,4 +31,13 @@ HEADERS +=\
     ActionManager/menuactioncontainer.h \
     ActionManager/actionmanager.h \
     ActionManager/action.h \
-    ActionManager/menubaractioncontainer.h
+    ActionManager/menubaractioncontainer.h \
+    idable.h \
+    widgetfactory.h \
+    mainform.h \
+    coreconst.h
+
+FORMS += \
+    MainForm.ui
+
+OTHER_FILES +=
