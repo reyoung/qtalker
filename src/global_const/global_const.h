@@ -2,9 +2,11 @@
 #define GLOBAL_CONST_H
 
 namespace Global {
+
 namespace Const {
-const char PluginPath[]="plugin/";
+const char PluginPath[] = "plugin/";
 }
 
 }
+
 #endif                                            // GLOBAL_CONST_H

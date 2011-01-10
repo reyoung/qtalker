@@ -3,7 +3,7 @@
 
 #include <QtCore/qglobal.h>
 
-#if defined(COREPLUGIN_LIBRARY)
+#if defined ( COREPLUGIN_LIBRARY )
 #  define COREPLUGINSHARED_EXPORT Q_DECL_EXPORT
 #else
 #  define COREPLUGINSHARED_EXPORT Q_DECL_IMPORT

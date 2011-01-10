@@ -21,11 +21,17 @@
 #include "../CorePlugin_global.h"
 #include "iactioncontainer.h"
 #include <QHash>
+
 namespace CorePlugin {
+
 class Action;
+
 class ID;
+
 class MenuActionContainer;
+
 class MenuBarActionContainer;
+
 class COREPLUGINSHARED_EXPORT ActionManager {
     ActionManager();
     Q_DISABLE_COPY(ActionManager)
@@ -72,9 +78,10 @@ public:
     Action* createAction(const ID& id);
 private:
     static ActionManager* m_instance;
-    QHash<int,Action*> m_actions;
-    QHash<int,IActionContainer*> m_containers;
+    QHash<int, Action*> m_actions;
+    QHash<int, IActionContainer*> m_containers;
 
 };
 }
+
 #endif                                            // ACTIONMANAGER_H

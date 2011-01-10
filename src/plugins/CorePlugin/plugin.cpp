@@ -3,6 +3,8 @@
 #include "core.h"
 #include "widgetfactory.h"
 #include "mainform.h"
+#include "sidewidget.h"
+
 using namespace CorePlugin;
 Plugin::Plugin()
 
@@ -15,8 +17,12 @@ bool Plugin::Initialize(const QStringList& cmdArgs) {
     Core::init(cmdArgs);
     return true;
 }
+
 void Plugin::Initialized() {
+
+    WidgetFactory::instance()->getMainSideWidget()->gotoPage(0);
+    WidgetFactory::instance()->getMainSideWidget()->compactHeader();
     WidgetFactory::instance()->getMainForm()->show();
 }
 
-Q_EXPORT_PLUGIN2(CorePlugin,Plugin)
+Q_EXPORT_PLUGIN2(CorePlugin, Plugin)

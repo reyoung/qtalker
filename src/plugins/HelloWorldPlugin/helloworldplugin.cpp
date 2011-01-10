@@ -9,6 +9,9 @@
 #include <ActionManager/action.h>
 #include <widgetfactory.h>
 #include <mainform.h>
+#include <menubar.h>
+#include <sidewidget.h>
+#include "hellopage.h"
 HelloWorldPlugin::HelloWorldPlugin() :
         ExtensionSystem::IPlugin() {
 }
@@ -16,17 +19,13 @@ HelloWorldPlugin::HelloWorldPlugin() :
 
 bool HelloWorldPlugin::Initialize(const QStringList& cmdArgs) {
     Q_UNUSED(cmdArgs);
-    using namespace CorePlugin;
-    MainForm* mf = CorePlugin::WidgetFactory::instance()->getMainForm();
-    ActionManager* am = ActionManager::instance();
 
-    MenuBarActionContainer* mb = am->createMenuBar(ID("Hello.MenuBar"));
-    mf->addWidgetToHeader1(new QPushButton(tr("Hello"),mf));
-    mf->addWidgetToHeader2(mb);
-    mf->addWidgetToBody(new QTextEdit(mf));
-    mf->addWidgetToHeader1(new QLabel(tr("Hello world"),mf));
+    using namespace CorePlugin;
+    static HelloPage hp;
+    WidgetFactory::instance()->getMainSideWidget()->addSidePage(&hp);
+
     return true;
 }
 
 
-Q_EXPORT_PLUGIN2(HelloWorldPlugin,HelloWorldPlugin)
+Q_EXPORT_PLUGIN2(HelloWorldPlugin, HelloWorldPlugin)

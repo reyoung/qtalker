@@ -2,9 +2,12 @@
 #define MAINFORM_H
 #include "widgetfactory.h"
 #include "CorePlugin_global.h"
+
 namespace Ui {
+
 class MainForm;
 }
+
 namespace CorePlugin {
 
 class COREPLUGINSHARED_EXPORT MainForm : public Widget {
@@ -30,4 +33,5 @@ private:
     Ui::MainForm* ui;
 };
 }
+
 #endif // MAINFORM_H

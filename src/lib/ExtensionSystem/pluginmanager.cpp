@@ -25,7 +25,7 @@ PluginManager* PluginManager::instance() {
 
 PluginManager::~PluginManager() {
     for (QList<QObject* >::iterator it = this->m_objList.begin();
-            it!=this->m_objList.end();++it) {
+            it != this->m_objList.end();++it) {
         delete *it;
     }
 }
@@ -34,20 +34,24 @@ PluginManager::~PluginManager() {
 void PluginManager::LoadPluginSpec(const QDir &dir) {
     QFileInfoList flist = dir.entryInfoList();
 
-    foreach(const QFileInfo& inf,flist) {
+    foreach(const QFileInfo& inf, flist) {
         if (inf.isDir()
-                &&!inf.isSymLink()
-                &&inf.fileName()!="."
-                &&inf.fileName()!="..") {
+                && !inf.isSymLink()
+                && inf.fileName() != "."
+                && inf.fileName() != "..") {
             this->LoadPluginSpec(inf.dir());
-        } else if (inf.completeSuffix()=="pluginspec") {
-            m_specs.append(PluginSpec(inf.filePath()));
         }
+
+        else
+            if (inf.completeSuffix() == "pluginspec") {
+                m_specs.append(PluginSpec(inf.filePath()));
+            }
     }
 }
 
 
 namespace Inner {
+
 struct AuxLoadStruct {
     SpecDependencyData key;
     QList<SpecDependencyData> depends;
@@ -58,8 +62,9 @@ struct AuxLoadStruct {
             depends.push_back(dep);
         }
     }
+
     bool operator == (const AuxLoadStruct& other) {
-        return this->key.Name==other.key.Name&&this->key.Version==other.key.Version;
+        return this->key.Name == other.key.Name && this->key.Version == other.key.Version;
     }
 };
 }
@@ -75,8 +80,8 @@ void PluginManager::LoadAllPlugin() {
 
     for (;;) {
         bool conti = false;
-        foreach(const Inner::AuxLoadStruct& spec,specList) {
-            if (spec.depends.size()==0) {
+        foreach(const Inner::AuxLoadStruct& spec, specList) {
+            if (spec.depends.size() == 0) {
 /// Load
                 conti = true;
                 QString fn("plugin/%1.%2");
@@ -89,13 +94,16 @@ void PluginManager::LoadAllPlugin() {
 
                 QPluginLoader loader(fn);
                 bool loadSuccess = loader.load();
+
                 if (!loadSuccess) {
-                    qWarning()<<tr("%1 Plugin Load Error ").arg(fn);
-                } else {
+                    qWarning() << tr("%1 Plugin Load Error ").arg(fn);
+                }
+
+                else {
                     QObject* obj = loader.instance();
                     this->addObject(obj);
 
-                    IPlugin* plugin = qobject_cast<IPlugin*>(obj);
+                    IPlugin* plugin = qobject_cast<IPlugin*> (obj);
                     foreach(const PluginSpec& s, this->m_specs) {
                         if (s.name() == spec.key.Name) {
                             plugin->setSpec(&s);
@@ -108,36 +116,41 @@ void PluginManager::LoadAllPlugin() {
                 }
 
 /// Set Statue
+
                 for (QList<PluginSpec>::iterator it = this->m_specs.begin();
-                        it!= this->m_specs.end();++it) {
-                    it->setState (PluginSpec::BeforeInit|PluginSpec::Loaded);
+                        it != this->m_specs.end();++it) {
+                    it->setState(PluginSpec::BeforeInit | PluginSpec::Loaded);
                 }
 
 /// Sovole Depend
+
                 for (QList<Inner::AuxLoadStruct>::iterator it = specList.begin()
-                        ;it!=specList.end();++it) {
+                        ;it != specList.end();++it) {
                     for (QList<SpecDependencyData>::iterator dit = it->depends.begin();
                             dit != it->depends.end();++dit) {
                         if (dit->Name == spec.key.Name
-                                &&dit->Version == spec.key.Version) {
+                                && dit->Version == spec.key.Version) {
                             it->depends.erase(dit);
                             break;
                         }
                     }
                 }
+
                 specList.removeOne(spec);
             }
         }
+
         if (!conti)
             break;
     }
-    for (QList<IPlugin* >::iterator it = olist.begin();it!=olist.end();++it) {
+
+    for (QList<IPlugin* >::iterator it = olist.begin();it != olist.end();++it) {
         IPlugin* plugin = *it;
         plugin->Initialized();
 
         int index = this->m_specs.indexOf(*plugin->getSpec());
 
-        this->m_specs[index].setState(PluginSpec::Loaded|PluginSpec::Inited);
+        this->m_specs[index].setState(PluginSpec::Loaded | PluginSpec::Inited);
     }
 
 }

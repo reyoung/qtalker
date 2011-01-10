@@ -6,30 +6,55 @@
 #include <QtCore>
 
 namespace CorePlugin {
-class COREPLUGINSHARED_EXPORT Widget:public QWidget,public IDAble {
+
+class COREPLUGINSHARED_EXPORT Widget: public QWidget, public IDAble {
+
     friend class WidgetFactory;
 protected:
-    Widget(const ID& id,QWidget* parent = 0):QWidget(parent),IDAble(id) {}
+    Widget(const ID& id, QWidget* parent = 0) : QWidget(parent), IDAble(id) {}
 };
-class COREPLUGINSHARED_EXPORT PushButton:public QPushButton,public IDAble {
+
+class COREPLUGINSHARED_EXPORT PushButton: public QPushButton, public IDAble {
+
     friend class WidgetFactory;
 protected:
-    PushButton(const ID& id,QWidget* parent = 0):QPushButton(parent),IDAble(id) {}
+    PushButton(const ID& id, QWidget* parent = 0) : QPushButton(parent), IDAble(id) {}
 };
-class COREPLUGINSHARED_EXPORT ComboBox:public QComboBox,public IDAble {
+
+class COREPLUGINSHARED_EXPORT ComboBox: public QComboBox, public IDAble {
+
     friend class WidgetFactory;
 protected:
-    ComboBox(const ID& id,QComboBox* parent = 0):QComboBox(parent),IDAble(id) {}
+    ComboBox(const ID& id, QComboBox* parent = 0) : QComboBox(parent), IDAble(id) {}
 };
-class COREPLUGINSHARED_EXPORT LineEdit:public QLineEdit,public IDAble {
+
+class COREPLUGINSHARED_EXPORT LineEdit: public QLineEdit, public IDAble {
+
     friend class WidgetFactory;
 protected:
-    LineEdit(const ID& id,QLineEdit* parent = 0):QLineEdit(parent),IDAble(id) {}
+    LineEdit(const ID& id, QLineEdit* parent = 0) : QLineEdit(parent), IDAble(id) {}
 };
+
+class COREPLUGINSHARED_EXPORT CommandLinkButton: public QCommandLinkButton, public
+            IDAble {
+
+    friend class WidgetFactory;
+private:
+    CommandLinkButton(const ID& id, QCommandLinkButton* parent = 0) : QCommandLinkButton(parent), IDAble(id) {
+        this->setMaximumWidth(40);
+    }
+};
+
 
 
 class MainForm;
-#define DEFINE_WIDGET_FACTORY_DATA(Class) QHash <int,Class*> m_##Class##_List;
+
+class MenuBar;
+
+class SideWidget;
+//enum MenuBar::Style;
+
+#define DEFINE_WIDGET_FACTORY_DATA(Class) QHash<int,Class*> m_##Class##_List;
 
 
 class COREPLUGINSHARED_EXPORT WidgetFactory {
@@ -48,15 +73,29 @@ public:
     LineEdit* createLineEdit(const ID& id);
     LineEdit* getLineEdit(const ID& id);
     MainForm* getMainForm();
+    CommandLinkButton* createCommandLinkButton(const ID& id);
+    CommandLinkButton* getCommandLinkButton(const ID& id);
+    MenuBar* createMenuBar(const ID& id, int st);
+    MenuBar* getMenuBar(const ID& id);
+    SideWidget* getMainSideWidget();
+    SideWidget* createSideWidget(const ID& id);
+    SideWidget* getSideWidget(const ID& id);
+
 private:
     static WidgetFactory* m_instance;
-    QHash <int,Widget*> m_widList;
+    QHash <int, Widget*> m_widList;
+    QHash <int, MenuBar* > m_menuBar;
+
     DEFINE_WIDGET_FACTORY_DATA(PushButton)
     DEFINE_WIDGET_FACTORY_DATA(ComboBox)
     DEFINE_WIDGET_FACTORY_DATA(LineEdit)
+    DEFINE_WIDGET_FACTORY_DATA(CommandLinkButton)
+    DEFINE_WIDGET_FACTORY_DATA(SideWidget)
     static MainForm* m_staticMainForm;
+    static SideWidget* m_mainSideWidget;
     template <class T>
-    static void cleanHashList(QHash <int,T*>* list);
+    static void cleanHashList(QHash<int, T* >* list);
 };
 }
+
 #endif // WIDGETFACTORY_H
