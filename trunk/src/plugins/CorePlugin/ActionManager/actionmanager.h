@@ -24,6 +24,8 @@
 namespace CorePlugin {
 class Action;
 class ID;
+class MenuActionContainer;
+class MenuBarActionContainer;
 class COREPLUGINSHARED_EXPORT ActionManager {
     ActionManager();
     Q_DISABLE_COPY(ActionManager)
@@ -64,9 +66,9 @@ public:
     \remark 1.2011/01/09 21:43 created by reyoung version
     \return
     */
-    IActionContainer* createMenu(const ID& id);
+    MenuActionContainer* createMenu(const ID& id);
 
-    IActionContainer* createMenuBar(const ID& id);
+    MenuBarActionContainer* createMenuBar(const ID& id);
     Action* createAction(const ID& id);
 private:
     static ActionManager* m_instance;
