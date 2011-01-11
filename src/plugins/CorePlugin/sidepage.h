@@ -12,6 +12,7 @@ public:
     SidePage(const ID& id);
     virtual CommandLinkButton* getHeader() = 0;
     virtual QWidget* getWidget() = 0;
+    virtual QString getTitle() = 0;
 };
 }
 

@@ -20,6 +20,9 @@ public:
         static PushButton* pb = WidgetFactory::instance()->createPushButton("HelloWorld.PB");
         return pb;
     }
+    virtual QString getTitle() {
+        return tr("Hello Page");
+    }
 };
 
 #endif // HELLOPAGE_H

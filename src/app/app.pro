@@ -1,9 +1,10 @@
 include(../globalconst.pri)
 include(../../qtalker.pri)
 
-INCLUDEPATH += $$ProjectRoot/src/lib/ExtensionSystem
+INCLUDEPATH += $$ProjectRoot/src/lib
 LIBS += -L$$ProjectRoot/bin
 LIBS += -lExtensionSystem
+LIBS += -lMessageManager
 #CONFIG   += console
 CONFIG   -= app_bundle
 
@@ -12,7 +13,7 @@ BinDest= $$ProjectRoot/bin
 DESTDIR = $$BinDest
 
 
-QT += gui core xml
+QT += gui core xml network
 
 SOURCES += \
     main.cpp
