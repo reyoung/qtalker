@@ -23,6 +23,7 @@ void Plugin::Initialized() {
     WidgetFactory::instance()->getMainSideWidget()->gotoPage(0);
     WidgetFactory::instance()->getMainSideWidget()->compactHeader();
     WidgetFactory::instance()->getMainForm()->show();
+    WidgetFactory::instance()->getSystemTrayIcon()->show();
 }
 
 Q_EXPORT_PLUGIN2(CorePlugin, Plugin)

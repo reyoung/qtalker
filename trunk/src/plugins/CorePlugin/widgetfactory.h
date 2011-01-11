@@ -25,14 +25,14 @@ class COREPLUGINSHARED_EXPORT ComboBox: public QComboBox, public IDAble {
 
     friend class WidgetFactory;
 protected:
-    ComboBox(const ID& id, QComboBox* parent = 0) : QComboBox(parent), IDAble(id) {}
+    ComboBox(const ID& id, QWidget* parent = 0) : QComboBox(parent), IDAble(id) {}
 };
 
 class COREPLUGINSHARED_EXPORT LineEdit: public QLineEdit, public IDAble {
 
     friend class WidgetFactory;
 protected:
-    LineEdit(const ID& id, QLineEdit* parent = 0) : QLineEdit(parent), IDAble(id) {}
+    LineEdit(const ID& id, QWidget* parent = 0) : QLineEdit(parent), IDAble(id) {}
 };
 
 class COREPLUGINSHARED_EXPORT CommandLinkButton: public QCommandLinkButton, public
@@ -40,11 +40,16 @@ class COREPLUGINSHARED_EXPORT CommandLinkButton: public QCommandLinkButton, publ
 
     friend class WidgetFactory;
 private:
-    CommandLinkButton(const ID& id, QCommandLinkButton* parent = 0) : QCommandLinkButton(parent), IDAble(id) {
+    CommandLinkButton(const ID& id, QWidget* parent = 0) : QCommandLinkButton(parent), IDAble(id) {
         this->setMaximumWidth(40);
     }
 };
-
+class COREPLUGINSHARED_EXPORT SystemTrayIcon:public QSystemTrayIcon,public IDAble
+{
+        friend class WidgetFactory;
+private:
+SystemTrayIcon(const ID& id,QObject* parent = 0):QSystemTrayIcon(parent),IDAble(id){}
+};
 
 
 class MainForm;
@@ -77,9 +82,13 @@ public:
     CommandLinkButton* getCommandLinkButton(const ID& id);
     MenuBar* createMenuBar(const ID& id, int st);
     MenuBar* getMenuBar(const ID& id);
+    MenuBar* getBottomMenuBar();
+
     SideWidget* getMainSideWidget();
     SideWidget* createSideWidget(const ID& id);
     SideWidget* getSideWidget(const ID& id);
+
+    SystemTrayIcon* getSystemTrayIcon();
 
 private:
     static WidgetFactory* m_instance;
@@ -91,6 +100,8 @@ private:
     DEFINE_WIDGET_FACTORY_DATA(LineEdit)
     DEFINE_WIDGET_FACTORY_DATA(CommandLinkButton)
     DEFINE_WIDGET_FACTORY_DATA(SideWidget)
+    static SystemTrayIcon* m_trayIcon;
+    static MenuBar* m_bottomMenuBar;
     static MainForm* m_staticMainForm;
     static SideWidget* m_mainSideWidget;
     template <class T>

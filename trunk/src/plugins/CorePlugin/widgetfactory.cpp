@@ -2,6 +2,7 @@
 #include "mainform.h"
 #include "menubar.h"
 #include "sidewidget.h"
+#include "coreconst.h"
 
 using namespace CorePlugin;
 #define ImplementWidgetFactory(Class) \
@@ -36,14 +37,18 @@ ImplementWidgetFactory(LineEdit)
 ImplementWidgetFactory(CommandLinkButton)
 ImplementWidgetFactory(SideWidget)
 
+
 WidgetFactory* WidgetFactory::m_instance = 0;
 MainForm* WidgetFactory::m_staticMainForm = 0;
 SideWidget* WidgetFactory::m_mainSideWidget = 0;
+MenuBar* WidgetFactory::m_bottomMenuBar = 0;
+SystemTrayIcon* WidgetFactory::m_trayIcon = 0;
 
 WidgetFactory::~WidgetFactory() {
 }
 
 WidgetFactory::WidgetFactory() {
+
 }
 
 void WidgetFactory::init() {
@@ -51,9 +56,16 @@ void WidgetFactory::init() {
     static MainForm mf;
     m_instance = &ins;
     m_staticMainForm = &mf;
-    static SideWidget sw("CorePlugin.SideWidget");
+    static SideWidget sw(Const::MainSideWidget);
     Q_ASSERT(sw.isIdValid());
     m_mainSideWidget = &sw;
+    static MenuBar * mb= ins.createMenuBar(Const::MainBottomMenuBar,MenuBar::Horizontal);
+    m_trayIcon = new SystemTrayIcon(Const::TrayIcon,&mf);
+    m_trayIcon->setIcon(QIcon(":/icon/trayicon.ico"));
+    QObject::connect(QApplication::instance(),SIGNAL(aboutToQuit()),m_trayIcon,SLOT(deleteLater()));
+
+    m_bottomMenuBar = mb;
+    m_staticMainForm->addWidgetToBottom1(mb);
     m_staticMainForm->addWidgetToBody(m_mainSideWidget);
 
 }
@@ -117,3 +129,14 @@ CorePlugin::MenuBar * CorePlugin::WidgetFactory::getMenuBar(const CorePlugin::ID
 CorePlugin::SideWidget * CorePlugin::WidgetFactory::getMainSideWidget() {
     return m_mainSideWidget;
 }
+
+CorePlugin::MenuBar * CorePlugin::WidgetFactory::getBottomMenuBar()
+{
+    return m_bottomMenuBar;
+}
+
+CorePlugin::SystemTrayIcon * CorePlugin::WidgetFactory::getSystemTrayIcon()
+{
+    return m_trayIcon;
+}
+

@@ -48,3 +48,6 @@ FORMS += \
     SideWidget.ui
 
 OTHER_FILES +=
+
+RESOURCES += \
+    icons.qrc

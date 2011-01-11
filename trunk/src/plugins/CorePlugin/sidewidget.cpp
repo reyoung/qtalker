@@ -39,6 +39,7 @@ void CorePlugin::SideWidget::gotoPage(int index) {
         this->removePageByIndex(this->m_currentIndex);
         this->m_pageList[index]->getHeader()->setCheckable(true);
         this->m_pageList[index]->getHeader()->setChecked(true);
+        ui->titleLabel->setText(m_pageList[index]->getTitle());
         this->ui->pageLayout->addWidget(w);
         this->m_currentIndex = index;
     }

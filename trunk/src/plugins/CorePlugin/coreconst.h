@@ -6,6 +6,9 @@ namespace CorePlugin {
 
 namespace Const {
 const ID MainForm("CorePlugin.MainForm");
+const ID MainSideWidget("CorePlugin.Main.SideWidget");
+const ID MainBottomMenuBar("CorePlugin.Main.BottomMenubar");
+const ID TrayIcon("CorePlugin.TrayIcon");
 }
 }
 
