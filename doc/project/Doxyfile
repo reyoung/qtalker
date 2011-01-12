@@ -38,7 +38,7 @@ PROJECT_NUMBER         = 0.0.1
 # If a relative path is entered, it will be relative to the location 
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = F:\MyOpenSource\qtcreator_doc
+OUTPUT_DIRECTORY       = F:\MyOpenSource\qtalker_doc
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
 # 4096 sub-directories (in 2 levels) under the output directory of each output 
@@ -590,7 +590,7 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
-INPUT                  = F:\MyOpenSource\qt-creator-2.0.1-src\src
+INPUT                  = F:\MyOpenSource\qtalker\src
 
 # This tag can be used to specify the character encoding of the source files 
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is 
@@ -598,7 +598,7 @@ INPUT                  = F:\MyOpenSource\qt-creator-2.0.1-src\src
 # into libc) for the transcoding. See http://www.gnu.org/software/libiconv for 
 # the list of possible encodings.
 
-INPUT_ENCODING         = UTF-8
+INPUT_ENCODING         = GBK
 
 # If the value of the INPUT tag contains directories, you can use the 
 # FILE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp 

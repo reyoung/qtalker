@@ -46,8 +46,12 @@ public:
     }
 
     virtual void parse(const QByteArray& array) =0;
-    virtual QByteArray toByteArray() = 0;
+    virtual QByteArray toByteArray()
+    {
+        return this->appendHeader(this->serialize());
+    }
 
+    virtual QByteArray serialize() const= 0;
 
     virtual QByteArray appendHeader(const QByteArray& data)
     {
