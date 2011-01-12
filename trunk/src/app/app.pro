@@ -4,7 +4,7 @@ include(../../qtalker.pri)
 INCLUDEPATH += $$ProjectRoot/src/lib
 LIBS += -L$$ProjectRoot/bin
 LIBS += -lExtensionSystem
-LIBS += -lMessageManager
+
 #CONFIG   += console
 CONFIG   -= app_bundle
 

@@ -15,6 +15,7 @@ INCLUDEPATH += $$ProjectRoot/src/plugins/CorePlugin
 LIBS += -L$$PluginDest
 LIBS += -lCorePlugin
 LIBS += -lMessage
+LIBS += -lNetwork
 
 
 SOURCES += \

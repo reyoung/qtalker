@@ -10,8 +10,8 @@ class HELLOWORLDPLUGINSHARED_EXPORT TestHelloMessage:public Message::IMessage
 public:
     TestHelloMessage();
     virtual void parse(const QByteArray& array);
-    virtual QByteArray toByteArray();
     virtual QString getID()const;
+    virtual QByteArray serialize()const;
 };
 }
 #endif // TESTHELLOMESSAGE_H

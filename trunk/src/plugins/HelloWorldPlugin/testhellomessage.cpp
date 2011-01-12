@@ -11,12 +11,13 @@ void HelloPlugin::TestHelloMessage::parse(const QByteArray &array)
     return ;
 }
 
-QByteArray HelloPlugin::TestHelloMessage::toByteArray()
-{
-    return this->appendHeader("");
-}
 
 QString HelloPlugin::TestHelloMessage::getID() const
 {
     return "Hello.Msg";
+}
+
+QByteArray HelloPlugin::TestHelloMessage::serialize() const
+{
+    return "";
 }
