@@ -18,14 +18,16 @@ SOURCES += \
     plugin.cpp \
     sendthread.cpp \
     rawdata.cpp \
-    udpthread.cpp
+    udpthread.cpp \
+    tcpthread.cpp
 
 HEADERS +=\
         Network_global.h \
     plugin.h \
     sendthread.h \
     rawdata.h \
-    udpthread.h
+    udpthread.h \
+    tcpthread.h
 
 symbian {
     #Symbian specific definitions

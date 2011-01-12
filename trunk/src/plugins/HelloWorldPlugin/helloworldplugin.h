@@ -3,6 +3,7 @@
 #include <ExtensionSystem/iplugin.h>
 #include <QObject>
 #include <Network/udpthread.h>
+#include <Network/tcpthread.h>
 class HelloWorldPlugin : public ExtensionSystem::IPlugin {
     Q_OBJECT
 public:
@@ -15,6 +16,7 @@ public slots:
     void send();
 private:
     Network::UdpThread* m_udpthread;
+    Network::TcpThread* m_tcpthread;
 };
 
 #endif                                            // HELLOWORLDPLUGIN_H
