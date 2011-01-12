@@ -10,7 +10,7 @@ PluginSpec::~PluginSpec() {
 
 
 PluginSpec::PluginSpec(const QString& fn) {
-    qDebug() << "Loading " << fn;
+    qDebug() << "Loading " << fn<<" Spec";
     QDomDocument document;
     QFile file(fn);
     file.open(QFile::ReadOnly);

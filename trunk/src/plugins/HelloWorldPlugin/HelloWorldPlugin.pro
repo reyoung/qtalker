@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += xml gui
+QT       += xml gui network
 include(../plugin.pri)
 
 TARGET = HelloWorldPlugin
@@ -14,10 +14,15 @@ DEFINES += HELLOWORLDPLUGIN_LIBRARY
 INCLUDEPATH += $$ProjectRoot/src/plugins/CorePlugin
 LIBS += -L$$PluginDest
 LIBS += -lCorePlugin
+LIBS += -lMessage
+
+
 SOURCES += \
-    helloworldplugin.cpp
+    helloworldplugin.cpp \
+    testhellomessage.cpp
 
 HEADERS +=\
         HelloWorldPlugin_global.h \
     helloworldplugin.h \
-    hellopage.h
+    hellopage.h \
+    testhellomessage.h

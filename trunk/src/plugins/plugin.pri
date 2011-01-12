@@ -2,7 +2,8 @@ include(../globalconst.pri)
 include(../../qtalker.pri)
 PluginDest = $$ProjectRoot/bin/plugin
 DESTDIR = $$PluginDest
-INCLUDEPATH += $$ProjectRoot/src/lib/ExtensionSystem
+INCLUDEPATH += $$ProjectRoot/src/lib
+INCLUDEPATH += $$ProjectRoot/src/plugins
 LIBS += -L$$ProjectRoot/bin
 LIBS += -lExtensionSystem
 PLUGINSPEC = $$_PRO_FILE_PWD_/$${TARGET}.pluginspec

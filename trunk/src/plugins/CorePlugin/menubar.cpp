@@ -43,7 +43,8 @@ void CorePlugin::MenuBar::addSpacer(int index) {
     if (index == -1)
         index = this->m_layout->count();
 
-    if (this->m_layout->metaObject()->className() == "QVBoxLayout") {
+//    qDebug()<<this->m_layout->metaObject()->className();
+    if (this->m_layout->metaObject()->className() != QString("QVBoxLayout")) {
         this->m_layout->insertSpacerItem(index, new QSpacerItem(10, 10, QSizePolicy::Expanding, QSizePolicy::Minimum));
     }
 

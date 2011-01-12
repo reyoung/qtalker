@@ -91,7 +91,7 @@ void PluginManager::LoadAllPlugin() {
                 fn = fn.arg(spec.key.Name).arg("dll");
 #endif
 /// end
-
+                qDebug()<<"Loading "<<fn;
                 QPluginLoader loader(fn);
                 bool loadSuccess = loader.load();
 
