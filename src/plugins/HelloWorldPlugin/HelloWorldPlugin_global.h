@@ -1,7 +1,7 @@
 #ifndef HELLOWORLDPLUGIN_GLOBAL_H
 #define HELLOWORLDPLUGIN_GLOBAL_H
 
-#include < QtCore / qglobal.h >
+#include <QtCore/qglobal.h>
 
 #if defined ( HELLOWORLDPLUGIN_LIBRARY )
 #  define HELLOWORLDPLUGINSHARED_EXPORT Q_DECL_EXPORT

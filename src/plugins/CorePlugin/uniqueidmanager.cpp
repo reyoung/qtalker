@@ -1,7 +1,7 @@
 #include "uniqueidmanager.h"
 
 using namespace CorePlugin;
-#include "pluginmanager.h"
+#include <ExtensionSystem/pluginmanager.h>
 
 UniqueIDManager* UniqueIDManager::m_instance = 0;
 void UniqueIDManager::init() {

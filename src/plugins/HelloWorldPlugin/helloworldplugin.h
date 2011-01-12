@@ -1,6 +1,6 @@
 #ifndef HELLOWORLDPLUGIN_H
 #define HELLOWORLDPLUGIN_H
-#include <iplugin.h>
+#include <ExtensionSystem/iplugin.h>
 #include <QObject>
 
 class HelloWorldPlugin : public ExtensionSystem::IPlugin {

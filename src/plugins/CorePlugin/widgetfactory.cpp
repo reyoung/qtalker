@@ -65,8 +65,10 @@ void WidgetFactory::init() {
     QObject::connect(QApplication::instance(),SIGNAL(aboutToQuit()),m_trayIcon,SLOT(deleteLater()));
 
     m_bottomMenuBar = mb;
+    mb->setMaximumHeight(40);
     m_staticMainForm->addWidgetToBottom1(mb);
     m_staticMainForm->addWidgetToBody(m_mainSideWidget);
+
 
 }
 

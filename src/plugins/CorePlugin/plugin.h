@@ -2,7 +2,7 @@
 #define PLUGIN_H
 
 #include <QObject>
-#include <iplugin.h>
+#include <ExtensionSystem/iplugin.h>
 #include "CorePlugin_global.h"
 
 namespace CorePlugin {
