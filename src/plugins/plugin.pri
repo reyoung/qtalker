@@ -10,3 +10,4 @@ PLUGINSPEC = $$_PRO_FILE_PWD_/$${TARGET}.pluginspec
 pluginspec.files += $${TARGET}.pluginspec
 pluginspec.path = /$$ProjectRoot/qtcreator/plugins
 INSTALLS += target pluginspec
+DISTFILES += $$TARGET.pluginspec

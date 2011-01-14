@@ -4,7 +4,8 @@ SUBDIRS = \
     CorePlugin\
     Message\
     Network\
-    HelloWorldPlugin
+    HelloWorldPlugin \
+    AudioDevice
 
 
 CONFIG   += ordered

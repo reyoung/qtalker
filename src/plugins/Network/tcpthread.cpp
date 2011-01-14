@@ -40,7 +40,7 @@ void Network::TcpThread::auxSend()
 {
 //    qDebug()<<"Connected";
     QTcpSocket* sock = qobject_cast<QTcpSocket*>(sender());
-    qDebug()<<sock->peerAddress()<<" "<<sock->peerPort();
+//    qDebug()<<sock->peerAddress()<<" "<<sock->peerPort();
     Q_ASSERT(sock!=0);
     QByteArray d = this->m_wait_send_datas.value(sock);
     this->m_wait_send_datas.remove(sock);
