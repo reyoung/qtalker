@@ -14,6 +14,8 @@ PluginManager::PluginManager() :
     QDir dir(Global::Const::PluginPath);
     this->LoadPluginSpec(dir);
     this->LoadAllPlugin();
+    this->connect(QCoreApplication::instance(),SIGNAL(aboutToQuit()),this,SLOT(aboutToClose()));
+
 }
 
 
@@ -158,4 +160,15 @@ void PluginManager::LoadAllPlugin() {
 
 void PluginManager::addObject(QObject *object) {
     this->m_objList.push_back(object);
+}
+
+void ExtensionSystem::PluginManager::aboutToClose()
+{
+    foreach (QObject* obj, this->m_objList) {
+        IPlugin* plugin = qobject_cast<IPlugin* >(obj);
+        if(plugin!=0)
+        {
+            plugin->aboutShutDown();
+        }
+    }
 }

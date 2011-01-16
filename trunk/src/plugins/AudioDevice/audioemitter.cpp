@@ -25,7 +25,7 @@ qint64 AudioEmitter::readData(char *data, qint64 maxlen)
 
 qint64 AudioEmitter::writeData(const char *data, qint64 len)
 {
-    QByteArray dat(data,len);
+    QByteArray dat = qCompress((const uchar* )data,len,9);
     emit dataRecieved(dat);
     if(this->m_max_level)
     {
