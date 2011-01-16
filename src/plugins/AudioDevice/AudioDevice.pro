@@ -24,7 +24,8 @@ HEADERS +=\
     plugin.h \
     audiooutput.h \
     audioinput.h \
-    audioemitter.h
+    audioemitter.h \
+    iaudiofilter.h
 
 symbian {
     #Symbian specific definitions

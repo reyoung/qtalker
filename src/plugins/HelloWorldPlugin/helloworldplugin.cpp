@@ -46,6 +46,24 @@ bool HelloWorldPlugin::Initialize(const QStringList& cmdArgs) {
     QTimer* timer = new QTimer(this);
     this->connect(timer,SIGNAL(timeout()),this,SLOT(send()));
     timer->start(1000);
+    QAudioFormat format;
+    // set up the format you want, eg.
+    format.setFrequency(8000);
+    format.setChannels(1);
+    format.setSampleSize(8);
+    format.setCodec("audio/pcm");
+    format.setByteOrder(QAudioFormat::LittleEndian);
+    format.setSampleType(QAudioFormat::UnSignedInt);
+
+
+    this->m_input = new AudioDevice::AudioInput(format);
+    this->m_output = new AudioDevice::AudioOutput(format);
+
+    this->connect(this->m_input,SIGNAL(dataRecieved(QByteArray)),this->m_output,SLOT(dataRecieved(QByteArray)));
+    this->connect(this->m_input,SIGNAL(dataRecieved(QByteArray)),
+                  this,SLOT(outputSize(QByteArray)));
+    this->m_input->start();
+
     return true;
 }
 
@@ -71,6 +89,11 @@ void HelloWorldPlugin::send()
 }
 
 Q_EXPORT_PLUGIN2(HelloWorldPlugin, HelloWorldPlugin)
+
+void HelloWorldPlugin::outputSize(QByteArray barray)
+{
+    qDebug()<<barray.size();
+}
 
 
 

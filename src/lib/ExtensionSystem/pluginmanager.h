@@ -22,7 +22,8 @@ public:
 signals:
 
 public slots:
-
+private slots:
+    void aboutToClose();
 private:
     QList<PluginSpec> m_specs;
     QList<QObject* > m_objList;

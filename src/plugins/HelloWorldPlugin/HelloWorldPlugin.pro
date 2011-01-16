@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += xml gui network
+QT       += xml gui network multimedia
 include(../plugin.pri)
 
 TARGET = HelloWorldPlugin
@@ -16,6 +16,7 @@ LIBS += -L$$PluginDest
 LIBS += -lCorePlugin
 LIBS += -lMessage
 LIBS += -lNetwork
+LIBS += -lAudioDevice
 
 
 SOURCES += \
